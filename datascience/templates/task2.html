@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+     {% block content %}
+         <b>Python Task 2</b>
+         <br>
+         <br>
+         <div id="task2">
+         <table>
+           <tr>
+              <td valign="top" style="padding:0 15px 0 15px;">
+                 <b>General table: </b>
+                 {{ general_table | safe }}
+              </td>
+              <td valign="top" style="padding:0 15px 0 15px;">
+                 <b>Summary table: </b>
+                 {{ summary_table | safe }}
+              </td>
+           </tr>
+        </table>
+         </div>
+     {% endblock %}
