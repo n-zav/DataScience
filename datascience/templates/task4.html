@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+     {% block content %}
+         <b>Python Task 2</b>
+         <br>
+         <br>
+         <div id="task4">
+            <table>
+               <tr>
+                  <td valign="top" style="padding:0 15px 0 15px;">
+                    <b>Aggregated:</b>
+                    {{ aggregated | safe }}
+                  </td>
+                  <td valign="top" style="padding:0 15px 0 15px;">
+                     <b>Top 5 expensive products:</b>
+                        {{ top_5 | safe}}
+                      <p><b>Category models not offering discounts:</b></p>
+                        {{ list_cat_m|join(', ') }}.
+                  </td>
+               </tr>
+            </table>
+         </div>
+     {% endblock %}
