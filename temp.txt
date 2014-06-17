@@ -1,3 +1,0 @@
-start ipython
-
-ipython notebook --ip='*'
