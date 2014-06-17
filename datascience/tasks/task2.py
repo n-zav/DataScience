@@ -3,23 +3,24 @@ import glob
 
 import pandas as pd
 from cStringIO import StringIO
+from datascience import basedir
 
 
-def create_tableS():
+def create_general_table():
     """
-    reads 3 Sandra files into one csv file and creates a summary by day
+    reads 3 Sandra files into one csv file.
     """
     #  get a list of all csv files in target directory
-    my_dir = "/vagrant/DataScience/datascience/textfiles/Sandra/"
-    filelist = []
-    os.chdir( my_dir )
+    my_dir = basedir + "/textfiles/Sandra/"
+    file_list = []
+    os.chdir(my_dir)
     for files in glob.glob("*.csv"):
-        filelist.append(files)
+        file_list.append(files)
 
     # read each csv file into single dataframe
     general_table = pd.DataFrame()
 
-    for f in filelist:
+    for f in file_list:
         s = StringIO()
         with open(my_dir + f) as f:
             for line in f:
@@ -32,6 +33,13 @@ def create_tableS():
         frame['Country'] = filename.split(' ')[3]
         general_table = general_table.append(frame, ignore_index=True)
 
+    return general_table
+
+
+def create_summary_table(general_table):
+    """
+    creates summary per day from the general table
+    """
     summary_table = general_table.groupby('Days').aggregate(sum)
 
-    return general_table, summary_table
+    return summary_table
