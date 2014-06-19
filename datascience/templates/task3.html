@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+     {% block content %}
+         <b>Python Task 3</b>
+
+         <form action="/task3" method="post">
+             <p>Enter the number:</p>
+             <label>
+                 <input type="number" min="2" name="number">
+             </label>
+              <input type="submit" value="Submit">
+         </form>
+
+         <br>
+
+         {% if schedule %}
+             Tournament schedule:
+            {% for item in schedule %}
+               <p> {{ item[0]|join(', ')}} &nbsp vs. &nbsp {{ item[1]|join(', ')}} </p>
+            {% endfor %}
+         {% endif %}
+         {% if error %}
+            {{ error }}
+         {% endif %}
+     {% endblock %}

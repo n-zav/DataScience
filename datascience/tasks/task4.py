@@ -18,8 +18,9 @@ def aggregate_per_category_1_and_brand(products):
     Aggregates number of products per category_1 and brand
     """
     aggregated = products.groupby(['category_1', 'brand']).size()
+    aggregated = aggregated.to_frame()
 
-    return aggregated.to_frame()
+    return aggregated.reset_index(level=1)
 
 
 def find_top_5(products):

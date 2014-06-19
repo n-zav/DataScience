@@ -29,7 +29,7 @@ def create_general_table():
         s.seek(0)  # "rewind" to the beginning of the StringIO object
 
         frame = pd.read_csv(s, sep=None, engine='python')
-        filename = os.path.splitext(str(f))[0]
+        filename = os.path.splitext(str(f))[0] # parse country from the filename
         frame['Country'] = filename.split(' ')[3]
         general_table = general_table.append(frame, ignore_index=True)
 

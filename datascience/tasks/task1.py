@@ -6,4 +6,5 @@ def print_array():
     output = []
     for i in array:
         output.append(' '.join(i))
+
     return output
